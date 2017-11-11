@@ -21,4 +21,6 @@ bash ../fontbuilder/makefont
 
 Thanks [github.com/alif-type/amiri](https://github.com/alif-type/amiri) for his great tools.
 
+The common or standard way (Make file) is what you could see in [https://github.com/bateni/qalam-tarash](https://github.com/bateni/qalam-tarash). Maybe we should switch to that repo.
+
 License: MIT
