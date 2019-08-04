@@ -1,7 +1,8 @@
 #!/bin/bash
 #
 # makefont - Font Builder
-# Written in 2015-2017 by Saber Rasetikerdar <saber.rastikerdar@gmail.com>
+# Written in 2015-2019 by Saber Rasetikerdar <saber.rastikerdar@gmail.com>
+# Works only on linux
 #
 # Requirements:
 #     build.py
@@ -33,11 +34,6 @@ fi
 
 if [ ! -d "${SOURCEDIR}" ]; then
     echo "SOURCEDIR not found!"
-    exit 1
-fi
-
-if [ ! -f "${BUILDCMD}" ]; then
-    echo "BUILDCMD not found!"
     exit 1
 fi
 
@@ -95,6 +91,13 @@ for ((i=0;i<${#ADDFILES[@]};++i));
 do
   cp "${ADDFILES[i]}" "${TEMPDIR}"
 done
+
+# Make variable
+if [ -d "variable" ]; then
+  cd variable/
+  ./makevariable.sh "${TEMPDIR}"
+  cd ..
+fi
 
 # Make the release package(zip)
 rm -f "$RELEASEFILEPATH"
