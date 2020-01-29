@@ -2,6 +2,9 @@
 The script tool for building files for [vazir-font](https://github.com/rastikerdar/vazir-font) and similar repositories.
 
 ## Requirements
+- fontforge
+- python3
+- python3-fontforge
 - ttfautohint
 - sfnt2woff
 - ttf2eot

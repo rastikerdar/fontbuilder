@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding=utf-8
 #
 # build.py - Font Builder
@@ -102,7 +102,7 @@ def make(infile, outfile, latinfile, farsidigits):
 
 def usage(extramessage, code):
     if extramessage:
-        print extramessage
+        print(extramessage)
 
     message = """Usage: %s OPTIONS...
 
@@ -115,7 +115,7 @@ Options:
   -h, --help            print this message and exit
 """ % os.path.basename(sys.argv[0])
 
-    print message
+    print(message)
     sys.exit(code)
 
 if __name__ == "__main__":
@@ -124,7 +124,7 @@ if __name__ == "__main__":
         opts, args = getopt.gnu_getopt(sys.argv[1:],
                                        "h",
                                        ["help", "input=", "output=", "latin=", "farsi-digits"])
-    except getopt.GetoptError, err:
+    except (getopt.GetoptError, err):
         usage(str(err), -1)
 
     infile = None
