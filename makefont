@@ -2,7 +2,7 @@
 #
 # makefont - Font Builder
 # Written in 2015-2019 by Saber Rasetikerdar <saber.rastikerdar@gmail.com>
-# Works only on linux
+# Works only on linux.
 #
 # Requirements:
 #     build.py
@@ -26,6 +26,7 @@ SOURCEDIR="source"
 LATINDIR="latin"
 DISTDIR="dist"
 BUILDCMD="${SCRIPTDIR}"/build.py
+LATINCOPYRIGHT="${LATINCOPYRIGHT}"
 
 if [ ! -f "${BUILDCMD}" ]; then
     echo "BUILDCMD not found!"
@@ -57,8 +58,8 @@ do
     "${BUILDCMD}" --input="${sf}" --output="${TEMPDIR}"/build/$filename-WOL.ttf
     "${BUILDCMD}" --input="${sf}" --output="${TEMPDIR}"/build/$filename-FD-WOL.ttf --farsi-digits
     if [ -f ${lf} ]; then  
-      "${BUILDCMD}" --input="${sf}" --latin="${lf}" --output="${TEMPDIR}"/build/$filename.ttf
-      "${BUILDCMD}" --input="${sf}" --latin="${lf}" --output="${TEMPDIR}"/build/$filename-FD.ttf --farsi-digits
+      "${BUILDCMD}" --input="${sf}" --latin="${lf}" --latin-copyright="${LATINCOPYRIGHT}" --output="${TEMPDIR}"/build/$filename.ttf
+      "${BUILDCMD}" --input="${sf}" --latin="${lf}" --latin-copyright="${LATINCOPYRIGHT}" --output="${TEMPDIR}"/build/$filename-FD.ttf --farsi-digits
     fi
   fi 
 done

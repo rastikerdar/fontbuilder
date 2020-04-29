@@ -40,7 +40,7 @@ def generateFont(font, outfile):
     font.generate(outfile, flags=flags)
 
 
-def make(infile, outfile, latinfile, farsidigits):
+def make(infile, outfile, latinfile, latincopyright, farsidigits):
     font = fontforge.open(infile)
     font.encoding = "Unicode"  # avoid a crash if compact was set
 
@@ -52,6 +52,9 @@ def make(infile, outfile, latinfile, farsidigits):
 
     if latinfile:
         font.mergeFonts(latinfile)
+
+    if latincopyright:
+        font.copyright += "\n" + latincopyright
 
     if farsidigits:
         # 0 1 2 3 4 5 6 7 8 9
@@ -123,13 +126,14 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.gnu_getopt(sys.argv[1:],
                                        "h",
-                                       ["help", "input=", "output=", "latin=", "farsi-digits"])
+                                       ["help", "input=", "output=", "latin=", "latin-copyright=", "farsi-digits"])
     except (getopt.GetoptError, err):
         usage(str(err), -1)
 
     infile = None
     outfile = None
     latinfile = None
+    latincopyright = None
     farsidigits = False
 
     for opt, arg in opts:
@@ -141,6 +145,8 @@ if __name__ == "__main__":
             outfile = arg
         elif opt == "--latin":
             latinfile = arg
+        elif opt == "--latin-copyright":
+            latincopyright = arg
         elif opt == "--farsi-digits":
             farsidigits = True
 
@@ -149,4 +155,4 @@ if __name__ == "__main__":
     if not outfile:
         usage("No output file specified", -1)
 
-    make(infile, outfile, latinfile, farsidigits)
+    make(infile, outfile, latinfile, latincopyright, farsidigits)
