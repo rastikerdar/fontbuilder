@@ -70,9 +70,9 @@ def make(infile, outfile, latinfile, latincopyright, farsidigits):
         font.selection.select(*latindigitsGlyphs)
         font.paste()
 
-        # 4 5 6
-        farsi3digitsGlyphs = ("uni06F4", "uni06F5", "uni06F6")
-        arabic3digitsGlyphs = ("afii57396", "afii57397", "afii57398")
+        # 0 4 5 6
+        farsi3digitsGlyphs = ("uni06F0", "uni06F4", "uni06F5", "uni06F6")
+        arabic3digitsGlyphs = ("uni0660", "uni0664", "uni0665", "uni0666")
 
         font.selection.select(*farsi3digitsGlyphs)
         font.copyReference()
